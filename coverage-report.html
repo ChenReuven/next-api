@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Coverage Report</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f9fafb;
+      color: #111827;
+      line-height: 1.5;
+      padding: 2rem;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+    .title {
+      font-size: 1.875rem;
+      font-weight: 700;
+    }
+    .timestamp {
+      font-size: 0.875rem;
+      color: #6b7280;
+    }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .summary-card {
+      background-color: white;
+      border-radius: 0.5rem;
+      padding: 1.5rem;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+    .summary-title {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #6b7280;
+      margin-bottom: 0.5rem;
+    }
+    .summary-value {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+    .high {
+      color: #10b981;
+    }
+    .medium {
+      color: #f59e0b;
+    }
+    .low {
+      color: #ef4444;
+    }
+    .chart-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+    .chart-card {
+      background-color: white;
+      border-radius: 0.5rem;
+      padding: 1.5rem;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+    .chart-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    .table-container {
+      background-color: white;
+      border-radius: 0.5rem;
+      padding: 1.5rem;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      overflow-x: auto;
+      margin-bottom: 2rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 0.75rem 1rem;
+      text-align: left;
+    }
+    th {
+      font-weight: 600;
+      background-color: #f3f4f6;
+    }
+    tr:not(:last-child) {
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .file-link {
+      color: #2563eb;
+      text-decoration: none;
+    }
+    .file-link:hover {
+      text-decoration: underline;
+    }
+    .progress-bar {
+      height: 8px;
+      background-color: #e5e7eb;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      border-radius: 4px;
+    }
+    .footer {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.875rem;
+      color: #6b7280;
+    }
+    .doughnut-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 300px;
+      margin-bottom: 2rem;
+    }
+    .doughnut-wrapper {
+      width: 300px;
+      height: 300px;
+      position: relative;
+    }
+    .doughnut-center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+    .doughnut-label {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #6b7280;
+    }
+    .doughnut-value {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #10b981;
+    }
+    .chart-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+    @media (max-width: 768px) {
+      .chart-container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1 class="title">Test Coverage Report</h1>
+      <span class="timestamp">Generated on March 15, 2025</span>
+    </div>
+
+    <div class="summary">
+      <div class="summary-card">
+        <div class="summary-title">Statements</div>
+        <div class="summary-value high">99.14%</div>
+        <div class="progress-bar">
+          <div class="progress-fill high" style="width: 99.14%"></div>
+        </div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-title">Branches</div>
+        <div class="summary-value high">93.54%</div>
+        <div class="progress-bar">
+          <div class="progress-fill high" style="width: 93.54%"></div>
+        </div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-title">Functions</div>
+        <div class="summary-value high">100%</div>
+        <div class="progress-bar">
+          <div class="progress-fill high" style="width: 100%"></div>
+        </div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-title">Lines</div>
+        <div class="summary-value high">99.09%</div>
+        <div class="progress-bar">
+          <div class="progress-fill high" style="width: 99.09%"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="doughnut-container">
+      <div class="doughnut-wrapper">
+        <canvas id="overallDoughnut"></canvas>
+        <div class="doughnut-center">
+          <div class="doughnut-label">Overall Coverage</div>
+          <div class="doughnut-value">97.94%</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chart-container">
+      <div class="chart-card">
+        <h2 class="chart-title">Coverage by Type</h2>
+        <canvas id="coverageChart"></canvas>
+      </div>
+      <div class="chart-card">
+        <h2 class="chart-title">Coverage by Directory</h2>
+        <canvas id="directoryChart"></canvas>
+      </div>
+    </div>
+
+    <div class="chart-row">
+      <div class="chart-card">
+        <h2 class="chart-title">Directory Comparison</h2>
+        <canvas id="horizontalBarChart"></canvas>
+      </div>
+    </div>
+
+    <div class="chart-row">
+      <div class="chart-card">
+        <h2 class="chart-title">Coverage Trend (Last 5 Runs)</h2>
+        <canvas id="trendChart"></canvas>
+      </div>
+    </div>
+
+    <div class="chart-container">
+      <div class="chart-card">
+        <h2 class="chart-title">Statements Coverage Distribution</h2>
+        <canvas id="statementsPieChart"></canvas>
+      </div>
+      <div class="chart-card">
+        <h2 class="chart-title">Branches Coverage Distribution</h2>
+        <canvas id="branchesPieChart"></canvas>
+      </div>
+    </div>
+
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>File</th>
+            <th>Statements</th>
+            <th>Branches</th>
+            <th>Functions</th>
+            <th>Lines</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a href="#" class="file-link">app</a></td>
+            <td>
+              <div class="progress-bar">
+                <div class="progress-fill high" style="width: 100%"></div>
+              </div>
+              <span>100% (15/15)</span>
+            </td>
+            <td>
+              <div class="progress-bar">
+                <div class="progress-fill high" style="width: 100%"></div>
+              </div>
+              <span>100% (0/0)</span>
+            </td>
+            <td>
+              <div class="progress-bar">
+                <div class="progress-fill high" style="width: 100%"></div>
+              </div>
+              <span>100% (4/4)</span>
+            </td>
+            <td>
+              <div class="progress-bar">
+                <div class="progress-fill high" style="width: 100%"></div>
+              </div>
+              <span>100% (15/15)</span>
+            </td>
+          </tr>
+          <tr>
+            <td><a href="#" class="file-link">app/api/auth</a></td>
+            <td>
+              <div class="progress-bar">
+                <div class="progress-fill high" style="width: 98.03%"></div>
+              </div>
+              <span>98.03% (50/51)</span>
+            </td>
+            <td>
+              <div class="progress-bar">
+                <div class="progress-fill high" style="width: 93.75%"></div>
+              </div>
+              <span>93.75% (15/16)</span>
+            </td>
+            <td>
+              <div class="progress-bar">
+                <div class="progress-fill high" style="width: 100%"></div>
+              </div>
+              <span>100% (6/6)</span>
+            </td>
+            <td>
+              <div class="progress-bar">
+                <div class="progress-fill high" style="width: 97.91%"></div>
+              </div>
+              <span>97.91% (47/48)</span>
+            </td>
+          </tr>
+          <tr>
+            <td><a href="#" class="file-link">app/api/users</a></td>
+            <td>
+              <div class="progress-bar">
+                <div class="progress-fill high" style="width: 100%"></div>
+              </div>
+              <span>100% (51/51)</span>
+            </td>
+            <td>
+              <div class="progress-bar">
+                <div class="progress-fill high" style="width: 93.33%"></div>
+              </div>
+              <span>93.33% (14/15)</span>
+            </td>
+            <td>
+              <div class="progress-bar">
+                <div class="progress-fill high" style="width: 100%"></div>
+              </div>
+              <span>100% (9/9)</span>
+            </td>
+            <td>
+              <div class="progress-bar">
+                <div class="progress-fill high" style="width: 100%"></div>
+              </div>
+              <span>100% (47/47)</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="footer">
+      <p>Generated with Chart.js and custom HTML/CSS</p>
+    </div>
+  </div>
+
+  <script>
+    // Overall Doughnut Chart
+    const doughnutCtx = document.getElementById('overallDoughnut').getContext('2d');
+    const doughnutChart = new Chart(doughnutCtx, {
+      type: 'doughnut',
+      data: {
+        labels: ['Covered', 'Not Covered'],
+        datasets: [{
+          data: [97.94, 2.06],
+          backgroundColor: [
+            '#10b981',
+            '#e5e7eb'
+          ],
+          borderWidth: 0,
+          cutout: '75%'
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            display: false
+          },
+          tooltip: {
+            callbacks: {
+              label: function(context) {
+                return context.label + ': ' + context.raw + '%';
+              }
+            }
+          }
+        }
+      }
+    });
+
+    // Coverage by Type Chart
+    const coverageCtx = document.getElementById('coverageChart').getContext('2d');
+    const coverageChart = new Chart(coverageCtx, {
+      type: 'bar',
+      data: {
+        labels: ['Statements', 'Branches', 'Functions', 'Lines'],
+        datasets: [{
+          label: 'Coverage %',
+          data: [99.14, 93.54, 100, 99.09],
+          backgroundColor: [
+            '#10b981',
+            '#10b981',
+            '#10b981',
+            '#10b981'
+          ],
+          borderColor: [
+            '#10b981',
+            '#10b981',
+            '#10b981',
+            '#10b981'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 100,
+            ticks: {
+              callback: function(value) {
+                return value + '%';
+              }
+            }
+          }
+        },
+        plugins: {
+          tooltip: {
+            callbacks: {
+              label: function(context) {
+                return context.raw + '%';
+              }
+            }
+          }
+        }
+      }
+    });
+
+    // Coverage by Directory Chart
+    const directoryCtx = document.getElementById('directoryChart').getContext('2d');
+    const directoryChart = new Chart(directoryCtx, {
+      type: 'radar',
+      data: {
+        labels: ['Statements', 'Branches', 'Functions', 'Lines'],
+        datasets: [
+          {
+            label: 'app',
+            data: [100, 100, 100, 100],
+            backgroundColor: 'rgba(16, 185, 129, 0.2)',
+            borderColor: 'rgba(16, 185, 129, 1)',
+            borderWidth: 2,
+            pointBackgroundColor: 'rgba(16, 185, 129, 1)'
+          },
+          {
+            label: 'app/api/auth',
+            data: [98.03, 93.75, 100, 97.91],
+            backgroundColor: 'rgba(59, 130, 246, 0.2)',
+            borderColor: 'rgba(59, 130, 246, 1)',
+            borderWidth: 2,
+            pointBackgroundColor: 'rgba(59, 130, 246, 1)'
+          },
+          {
+            label: 'app/api/users',
+            data: [100, 93.33, 100, 100],
+            backgroundColor: 'rgba(139, 92, 246, 0.2)',
+            borderColor: 'rgba(139, 92, 246, 1)',
+            borderWidth: 2,
+            pointBackgroundColor: 'rgba(139, 92, 246, 1)'
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          r: {
+            angleLines: {
+              display: true
+            },
+            suggestedMin: 90,
+            suggestedMax: 100,
+            ticks: {
+              callback: function(value) {
+                return value + '%';
+              }
+            }
+          }
+        },
+        plugins: {
+          tooltip: {
+            callbacks: {
+              label: function(context) {
+                return context.dataset.label + ': ' + context.raw + '%';
+              }
+            }
+          }
+        }
+      }
+    });
+
+    // Horizontal Bar Chart for Directory Comparison
+    const horizontalBarCtx = document.getElementById('horizontalBarChart').getContext('2d');
+    const horizontalBarChart = new Chart(horizontalBarCtx, {
+      type: 'bar',
+      data: {
+        labels: ['app', 'app/api/auth', 'app/api/users'],
+        datasets: [
+          {
+            label: 'Statements',
+            data: [100, 98.03, 100],
+            backgroundColor: 'rgba(16, 185, 129, 0.7)',
+            borderColor: 'rgba(16, 185, 129, 1)',
+            borderWidth: 1
+          },
+          {
+            label: 'Branches',
+            data: [100, 93.75, 93.33],
+            backgroundColor: 'rgba(59, 130, 246, 0.7)',
+            borderColor: 'rgba(59, 130, 246, 1)',
+            borderWidth: 1
+          },
+          {
+            label: 'Functions',
+            data: [100, 100, 100],
+            backgroundColor: 'rgba(139, 92, 246, 0.7)',
+            borderColor: 'rgba(139, 92, 246, 1)',
+            borderWidth: 1
+          },
+          {
+            label: 'Lines',
+            data: [100, 97.91, 100],
+            backgroundColor: 'rgba(245, 158, 11, 0.7)',
+            borderColor: 'rgba(245, 158, 11, 1)',
+            borderWidth: 1
+          }
+        ]
+      },
+      options: {
+        indexAxis: 'y',
+        responsive: true,
+        scales: {
+          x: {
+            beginAtZero: true,
+            max: 100,
+            ticks: {
+              callback: function(value) {
+                return value + '%';
+              }
+            }
+          }
+        },
+        plugins: {
+          tooltip: {
+            callbacks: {
+              label: function(context) {
+                return context.dataset.label + ': ' + context.raw + '%';
+              }
+            }
+          }
+        }
+      }
+    });
+
+    // Trend Chart
+    const trendCtx = document.getElementById('trendChart').getContext('2d');
+    const trendChart = new Chart(trendCtx, {
+      type: 'line',
+      data: {
+        labels: ['Mar 11', 'Mar 12', 'Mar 13', 'Mar 14', 'Mar 15'],
+        datasets: [
+          {
+            label: 'Statements',
+            data: [97.5, 98.2, 98.6, 99.0, 99.14],
+            borderColor: 'rgba(16, 185, 129, 1)',
+            backgroundColor: 'rgba(16, 185, 129, 0.1)',
+            tension: 0.4,
+            fill: true
+          },
+          {
+            label: 'Branches',
+            data: [90.1, 91.5, 92.3, 93.0, 93.54],
+            borderColor: 'rgba(59, 130, 246, 1)',
+            backgroundColor: 'rgba(59, 130, 246, 0.1)',
+            tension: 0.4,
+            fill: true
+          },
+          {
+            label: 'Functions',
+            data: [98.0, 98.5, 99.0, 99.5, 100],
+            borderColor: 'rgba(139, 92, 246, 1)',
+            backgroundColor: 'rgba(139, 92, 246, 0.1)',
+            tension: 0.4,
+            fill: true
+          },
+          {
+            label: 'Lines',
+            data: [97.0, 97.8, 98.2, 98.7, 99.09],
+            borderColor: 'rgba(245, 158, 11, 1)',
+            backgroundColor: 'rgba(245, 158, 11, 0.1)',
+            tension: 0.4,
+            fill: true
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: false,
+            min: 85,
+            max: 100,
+            ticks: {
+              callback: function(value) {
+                return value + '%';
+              }
+            }
+          }
+        },
+        plugins: {
+          tooltip: {
+            callbacks: {
+              label: function(context) {
+                return context.dataset.label + ': ' + context.raw + '%';
+              }
+            }
+          }
+        }
+      }
+    });
+
+    // Statements Pie Chart
+    const statementsPieCtx = document.getElementById('statementsPieChart').getContext('2d');
+    const statementsPieChart = new Chart(statementsPieCtx, {
+      type: 'pie',
+      data: {
+        labels: ['app (15)', 'app/api/auth (50)', 'app/api/users (51)'],
+        datasets: [{
+          data: [15, 50, 51],
+          backgroundColor: [
+            'rgba(16, 185, 129, 0.7)',
+            'rgba(59, 130, 246, 0.7)',
+            'rgba(139, 92, 246, 0.7)'
+          ],
+          borderColor: [
+            'rgba(16, 185, 129, 1)',
+            'rgba(59, 130, 246, 1)',
+            'rgba(139, 92, 246, 1)'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          tooltip: {
+            callbacks: {
+              label: function(context) {
+                const label = context.label || '';
+                const value = context.raw || 0;
+                const total = context.dataset.data.reduce((acc, val) => acc + val, 0);
+                const percentage = Math.round((value / total) * 100);
+                return label + ': ' + value + ' statements (' + percentage + '%)';
+              }
+            }
+          }
+        }
+      }
+    });
+
+    // Branches Pie Chart
+    const branchesPieCtx = document.getElementById('branchesPieChart').getContext('2d');
+    const branchesPieChart = new Chart(branchesPieCtx, {
+      type: 'pie',
+      data: {
+        labels: ['app (0)', 'app/api/auth (15)', 'app/api/users (14)'],
+        datasets: [{
+          data: [0, 15, 14],
+          backgroundColor: [
+            'rgba(16, 185, 129, 0.7)',
+            'rgba(59, 130, 246, 0.7)',
+            'rgba(139, 92, 246, 0.7)'
+          ],
+          borderColor: [
+            'rgba(16, 185, 129, 1)',
+            'rgba(59, 130, 246, 1)',
+            'rgba(139, 92, 246, 1)'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          tooltip: {
+            callbacks: {
+              label: function(context) {
+                const label = context.label || '';
+                const value = context.raw || 0;
+                const total = context.dataset.data.reduce((acc, val) => acc + val, 0);
+                const percentage = total === 0 ? 0 : Math.round((value / total) * 100);
+                return label + ': ' + value + ' branches (' + percentage + '%)';
+              }
+            }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html> 
