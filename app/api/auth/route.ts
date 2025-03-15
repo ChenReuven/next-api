@@ -1,13 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 
 // Mock user database
-const users = [
+export const users = [
   { id: 1, username: "admin", password: "admin123", role: "admin" },
   { id: 2, username: "user", password: "user123", role: "user" },
 ];
 
 // Mock token database
-let tokens: { [key: string]: { userId: number; expires: Date } } = {};
+export let tokens: { [key: string]: { userId: number; expires: Date } } = {};
 
 // Generate a random token
 function generateToken(): string {
